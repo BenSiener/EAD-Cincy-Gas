@@ -11,9 +11,14 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer orderId;
-    public Integer customerId;
-    public Date orderDate;
-    public Integer quantity;
+    @Column(name = "customer_id")
+    private Integer customerId;
+
+    @Column(name = "order_date")
+    private Date orderDate;
+
+    @Column(name = "quantity")
+    private Integer quantity;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<PropaneTank> propaneTanks;
     /**
@@ -65,7 +70,7 @@ public class Order {
         this.customerId = customerId;
     }
 
-   public Date getOrderDate(){
+    public Date getOrderDate(){
         return orderDate;
     }
 
@@ -73,3 +78,4 @@ public class Order {
         this.orderDate = orderDate;
     }
 }
+

@@ -10,30 +10,28 @@ import java.sql.Date;
 public class PropaneTank {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "propane_tank_id")
     private Integer propaneTankId;
 
     @ManyToOne
     @JoinColumn(name="order_id")
     private Order order;
 
+    @Column(name = "delivery_date")
     private Date deliveryDate;
+
+    @Column(name = "delivery_status")
     private String deliveryStatus;
-    private Integer TankSize;
 
-    public void setTankSize(Integer TankSize) {
-        this.TankSize = TankSize;
+    @Column(name = "tank_size")
+    private Integer tankSize;
+
+    public Integer getPropaneTankId() {
+        return propaneTankId;
     }
 
-    public Integer getTankSize() {
-        return TankSize;
-    }
-
-    public void getPropaneTankId(Integer propaneTankId) {
+    public void setPropaneTankId(Integer propaneTankId) {
         this.propaneTankId = propaneTankId;
-    }
-
-    public Integer getPropaneTankId(){
-        return this.propaneTankId;
     }
 
     public Order getOrder() {
@@ -44,19 +42,27 @@ public class PropaneTank {
         this.order = order;
     }
 
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public String getDeliveryStatus() {
+        return deliveryStatus;
     }
 
     public void setDeliveryStatus(String deliveryStatus) {
         this.deliveryStatus = deliveryStatus;
     }
 
-    public String getDeliveryStatus() {
-        return deliveryStatus;
+    public Integer getTankSize() {
+        return tankSize;
+    }
+
+    public void setTankSize(Integer tankSize) {
+        this.tankSize = tankSize;
     }
 }
